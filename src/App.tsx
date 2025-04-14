@@ -1,8 +1,18 @@
 
 import './App.css'
 
-const App = (
-  prop:any
+
+interface AppProps {
+  timestamp: string;
+  magicNumber: number;
+}
+
+const App: React.FC<AppProps> = (
+
+  {
+    timestamp
+    , magicNumber
+  }
 ) => {
 
   return (
@@ -12,6 +22,9 @@ const App = (
       >
         TCA CHES TIMOTHY
       </h1>
+      <p>
+        { timestamp } - { magicNumber }
+      </p>
       <button
         className='btn btn-secondary btn-soft btn-xl'
       >
