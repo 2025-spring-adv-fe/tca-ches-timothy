@@ -12,7 +12,7 @@ function App() {
       </h1>
       <div className="p-4">
         <button
-          className='btn btn-secondary btn-soft btn-xl mt-4'
+          className='btn btn-secondary btn-soft btn-xl mt-4 w-full md:w-auto text-nowrap'
         >
           Play Chess
         </button>
@@ -21,8 +21,135 @@ function App() {
         >
           Leaderboard...
         </h2>
-      </div>
+
+
+        <div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
+          <div 
+          className="card w-full bg-base card-lg shadow-sm mt-4"
+          >
+            <div 
+              className="card-body"
+            >
+              <h2 
+                className="card-title"
+              >
+                Leaderboard...
+              </h2>
+              <p>
+                Leaderboard coming soon...
+              </p>
+            </div>
+          </div>
+          
+          <div 
+            className="card w-full bg-base card-lg shadow-sm mt-4"
+          >
+            <div 
+              className="card-body"
+            >
+              <h2 
+                className="card-title"
+              >
+                Leaderboard...
+              </h2>
+              <p>
+                Leaderboard coming soon...
+              </p>
+            </div>
+          </div>
+
+          <div 
+            className="card w-full bg-base card-lg shadow-sm mt-4"
+          >
+            <div 
+              className="card-body"
+            >
+              <h2 
+                className="card-title"
+              >
+                Leaderboard...
+              </h2>
+              <p>
+                Leaderboard coming soon...
+              </p>
+            </div>
+          </div>
+
+          <div 
+            className="card w-full bg-base card-lg shadow-sm mt-4"
+          >
+            <div 
+              className="card-body"
+            >
+              <h2 
+                className="card-title"
+              >
+                Leaderboard...
+              </h2>
+              <p>
+                Leaderboard coming soon...
+              </p>
+            </div>
+          </div>
+
+          <div 
+            className="card w-full bg-base card-lg shadow-sm mt-4"
+          >
+            <div 
+              className="card-body"
+            >
+              <h2 
+                className="card-title"
+              >
+                Leaderboard...
+              </h2>
+              <p>
+                Leaderboard coming soon...
+              </p>
+            </div>
+          </div>
+
+          <div 
+            className="card w-full bg-base card-lg shadow-sm mt-4"
+          >
+            <div 
+              className="card-body"
+            >
+              <h2 
+                className="card-title"
+              >
+                Leaderboard...
+              </h2>
+              <p>
+                Leaderboard coming soon...
+              </p>
+            </div>
+          </div>
+
+          <div 
+            className="card w-full bg-base card-lg shadow-sm mt-4"
+          >
+            <div 
+              className="card-body"
+            >
+              <h2 
+                className="card-title"
+              >
+                Leaderboard...
+              </h2>
+              <p>
+                Leaderboard coming soon...
+              </p>
+            </div>
+          </div>
       
+      </div>
+        
+      
+      
+      </div>
     </div>
   )
 }
