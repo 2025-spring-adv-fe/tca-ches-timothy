@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router";
+
 export const Play = () => {
+    const nav = useNavigate();
     return (
       <>
         <h3
@@ -6,7 +9,12 @@ export const Play = () => {
         >
           Play
         </h3>
-        <button className="btn btn-active btn-secondary btn-lg mt-4">
+        <button 
+          className="btn btn-active btn-secondary btn-lg mt-4"
+          onClick={
+            () => nav('/')
+          }
+        >
           Done
         </button>
       </>
