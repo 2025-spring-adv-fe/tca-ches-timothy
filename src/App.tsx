@@ -6,6 +6,8 @@ import {
   , Route
 } from 'react-router';
 import { Home } from './Home';
+import { Setup } from './Setup';
+import { Play } from './Play';
 
 
 
@@ -21,6 +23,18 @@ const App = () => {
             path='/'
             element={
               <Home />
+            }
+          />
+          <Route 
+            path='/setup'
+            element={
+              <Setup />
+            }
+          />
+          <Route 
+            path='/play'
+            element={
+              <Play />
             }
           />
         </Routes>

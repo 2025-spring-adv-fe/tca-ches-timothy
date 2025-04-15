@@ -1,13 +1,13 @@
-export const Home = () => {
+export const Play = () => {
     return (
       <>
         <h3
           className="text-2xl font-bold"
         >
-          Home
+          Play
         </h3>
         <button className="btn btn-active btn-secondary btn-lg mt-4">
-          Play Chess
+          Done
         </button>
       </>
     );
