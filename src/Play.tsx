@@ -10,7 +10,7 @@ export const Play = () => {
         <h3
           className="text-2xl font-bold"
         >
-          Play
+          Play (0 games played)
         </h3>
         <h4
           className="text-lg font-semibold"
