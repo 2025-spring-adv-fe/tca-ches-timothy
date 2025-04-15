@@ -1,35 +1,43 @@
 
 import './App.css'
+import {
+  HashRouter
+  , Routes
+  , Route
+} from 'react-router';
 
 
-interface AppProps {
-  timestamp: string;
-  magicNumber: number;
-}
-
-const App: React.FC<AppProps> = (
-
-  {
-    timestamp
-    , magicNumber
-  }
-) => {
-
+const Home = () => {
   return (
-    <div>
-      <h1
-        className='text-2xl font-bold'
+    <>
+      <h3
+        text-2xl font-bold
       >
-        TCA CHES TIMOTHY
-      </h1>
-      <p>
-        { timestamp } - { magicNumber }
-      </p>
-      <button
-        className='btn btn-secondary btn-soft btn-xl'
-      >
+        Home
+      </h3>
+      <button className="btn btn-active btn-secondary btn-lg mt-4">
         Play Chess
       </button>
+    </>
+  );
+};
+
+const App = () => {
+
+  return (
+    <div
+      className='p-4'
+    >
+      <HashRouter>
+        <Routes>
+          <Route 
+            path='/'
+            element={
+              <Home />
+            }
+          />
+        </Routes>
+      </HashRouter>
     </div>
   )
 }
