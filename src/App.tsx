@@ -5,7 +5,7 @@ import {
   , Routes
   , Route
 } from 'react-router';
-import { Home } from './Home';
+import { AppTitle, Home } from './Home';
 import { Setup } from './Setup';
 import { Play } from './Play';
 import { useState } from 'react';
@@ -43,6 +43,7 @@ const App = () => {
 
   const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults)
   //const [gameResults, setGameResults] = useState<GameResult[]>([])
+  const [title, setTitle] = useState(AppTitle);
 
   const addNewGameResult = (newGameResult: GameResult) => setGameResults(
     [
@@ -57,7 +58,7 @@ const App = () => {
     >
       <div className="navbar bg-base-300 shadow-lg" >
         <h1 className="text-xl font-bold"></h1>
-        Chess
+        { title }
       </div>
       <div className="p-4">
         <HashRouter>
@@ -69,6 +70,7 @@ const App = () => {
                   leaderboardData={
                     getLeaderboard(gameResults)
                   }
+                  setTitle={setTitle}
                 />
               }
             />
@@ -76,6 +78,7 @@ const App = () => {
               path='/setup'
               element={
                 <Setup  
+                  setTitle={setTitle}
                 />
               }
             />
@@ -83,7 +86,8 @@ const App = () => {
               path='/play'
               element={
                 <Play 
-                addNewGameResult={addNewGameResult}
+                  addNewGameResult={addNewGameResult}
+                  setTitle={setTitle}
                 />
               }
             />

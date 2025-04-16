@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router";
 
 interface SetupProps {
-
+  setTitle: (t:string) => void;
 };
 
 export const Setup: React.FC<SetupProps> = ({
-
+  setTitle
 }) => {
+
+    setTitle("Setup")
     const game = useNavigate();
     return (
       <>
