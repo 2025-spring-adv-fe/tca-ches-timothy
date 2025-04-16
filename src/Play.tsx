@@ -3,12 +3,12 @@ import { useNavigate } from "react-router";
 
 interface PlayProps {
   totalGameCount: number;
-  setTotalGameCount: (newValue: number) => void;
+
 };
 
 export const Play: React.FC<PlayProps> = ({
   totalGameCount
-  , setTotalGameCount
+
 }) => {
     const nav = useNavigate();
 
@@ -39,7 +39,6 @@ export const Play: React.FC<PlayProps> = ({
           className="btn btn-active btn-secondary btn-lg mt-4"
           onClick={
             () => {
-              setTotalGameCount(totalGameCount + 1);
               nav(-2);
             }
           }
