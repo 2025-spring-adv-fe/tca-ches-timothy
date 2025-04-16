@@ -9,7 +9,34 @@ import { Home } from './Home';
 import { Setup } from './Setup';
 import { Play } from './Play';
 import { useState } from 'react';
+import { GameResult } from './GameResults';
 
+const dummyGameResults: GameResult[] = [
+  {
+      winner: "Hermione"
+      , players: [
+          "Hermione"
+          , "Harry"
+          , "Ron"
+      ]
+
+  }
+  , {
+      winner: "Ron"
+      , players: [
+          "Hermione"
+          , "Ron"
+      ]
+  }
+  , {
+      winner: "Larry"
+      , players: [
+          "Larry"
+          , "Curly"
+          , "Moe"
+      ]
+  }
+];
 
 
 const App = () => {
