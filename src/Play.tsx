@@ -1,28 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { GameResult } from "./GameResults";
 
 interface PlayProps {
-  totalGameCount: number;
   addNewGameResult: (r: GameResult) => void;
+  setTitle: (t: string) => void
 
 };
 
 export const Play: React.FC<PlayProps> = ({
-  totalGameCount
-  , addNewGameResult
+  addNewGameResult
+  , setTitle
 
 }) => {
+
+    useEffect(
+      () => setTitle("Play")
+      , []
+    )
+    setTitle("Play")
     const nav = useNavigate();
 
     const [turnNumber, setTurnNumber] = useState(1);
     return (
       <>
-        <h3
-          className="text-2xl font-bold"
-        >
-          Play ({totalGameCount} games played)
-        </h3>
+
         <h4
           className="text-lg font-semibold"
         >
