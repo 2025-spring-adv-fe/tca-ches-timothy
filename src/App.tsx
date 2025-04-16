@@ -9,7 +9,7 @@ import { Home } from './Home';
 import { Setup } from './Setup';
 import { Play } from './Play';
 import { useState } from 'react';
-import { GameResult } from './GameResults';
+import { GameResult, getLeaderboard } from './GameResults';
 
 const dummyGameResults: GameResult[] = [
   {
@@ -54,6 +54,9 @@ const App = () => {
             element={
               <Home 
                 totalGameCount={gameResults.length}
+                leaderboardData={
+                  getLeaderboard(gameResults)
+                }
               />
             }
           />
