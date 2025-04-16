@@ -73,7 +73,11 @@ export const Home: React.FC<HomeProps> = ({
                     </table>
                   </div>
                 )
-                : ()
+                : (
+                  <p>
+                    Play a game to see the leaderboard
+                  </p>
+                )
             }
             
 
