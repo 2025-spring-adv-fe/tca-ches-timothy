@@ -43,6 +43,13 @@ const App = () => {
 
   const [gameResults, setGameResults] = useState(dummyGameResults)
 
+  const addNewGameResult = (newGameResult: GameResult) => setGameResults(
+    [
+      ...gameResults
+      , newGameResult
+    ]
+  )
+
   return (
     <div
       className='p-4'
@@ -74,6 +81,7 @@ const App = () => {
             element={
               <Play 
               totalGameCount={gameResults.length}
+              addNewGameResult={addNewGameResult}
               />
             }
           />
