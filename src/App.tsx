@@ -41,7 +41,8 @@ const dummyGameResults: GameResult[] = [
 
 const App = () => {
 
-  const [gameResults, setGameResults] = useState(dummyGameResults)
+  const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults)
+  //const [gameResults, setGameResults] = useState<GameResult[]>([])
 
   const addNewGameResult = (newGameResult: GameResult) => setGameResults(
     [
