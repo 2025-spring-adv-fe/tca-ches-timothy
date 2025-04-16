@@ -28,6 +28,23 @@ export const Home: React.FC<HomeProps> = ({
         >
           Play Chess
         </button>
+        <div 
+          className="card bg-base-100 w-full shadow-lg mt-4"
+        >
+          <div 
+            className="card-body"
+          >
+            <h2 
+              className="card-title"
+            >
+              Leaderboard
+            </h2>
+            <p>
+              Leaderboard goes here
+            </p>
+
+          </div>
+        </div>
       </>
     );
   };
