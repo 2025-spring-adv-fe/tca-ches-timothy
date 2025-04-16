@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 interface SetupProps {
@@ -7,6 +8,11 @@ interface SetupProps {
 export const Setup: React.FC<SetupProps> = ({
   setTitle
 }) => {
+
+    useEffect(
+      () => setTitle("Setup")
+      , []
+    )
 
     setTitle("Setup")
     const game = useNavigate();

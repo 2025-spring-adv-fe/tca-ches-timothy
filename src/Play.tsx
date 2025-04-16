@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { GameResult } from "./GameResults";
 
@@ -14,6 +14,10 @@ export const Play: React.FC<PlayProps> = ({
 
 }) => {
 
+    useEffect(
+      () => setTitle("Play")
+      , []
+    )
     setTitle("Play")
     const nav = useNavigate();
 
