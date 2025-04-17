@@ -18,7 +18,6 @@ export const Play: React.FC<PlayProps> = ({
       () => setTitle("Play")
       , []
     )
-    setTitle("Play")
     const nav = useNavigate();
 
     const [turnNumber, setTurnNumber] = useState(0);

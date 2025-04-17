@@ -17,15 +17,12 @@ export const Home: React.FC<HomeProps> = ({
   , generalFacts
 }) => {
 
-    console.log(
-      generalFacts
-    )
+
     useEffect(
       () => setTitle(AppTitle)
       , []
     );
 
-    setTitle(AppTitle);
     const nav = useNavigate();
     return (
       <>
@@ -37,6 +34,63 @@ export const Home: React.FC<HomeProps> = ({
         >
           Play Chess
         </button>
+
+        <div 
+          className="card bg-base-100 w-full shadow-lg mt-4"
+        >
+          <div 
+            className="card-body"
+          >
+            <h2 
+              className="card-title"
+            >
+              General
+            </h2>
+            <div className="overflow-x-auto">
+              <table className="table">
+                <tbody>
+                  <tr
+                  >
+                    <td>
+                      Last Played
+                    </td>
+                    <td>{generalFacts.lastPlayed}</td>
+
+                  </tr>
+
+                  <tr
+                  >
+                    <td>
+                      Total Games
+                    </td>
+                    <td>{generalFacts.totalGames}</td>
+
+                  </tr>
+
+                  <tr
+                  >
+                    <td>
+                      Shortest Game
+                    </td>
+                    <td>{generalFacts.shortestGame}</td>
+
+                  </tr>
+
+                  <tr
+                  >
+                    <td>
+                      Longest Game
+                    </td>
+                    <td>{generalFacts.longestGame}</td>
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
         <div 
           className="card bg-base-100 w-full shadow-lg mt-4"
         >
