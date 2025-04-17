@@ -43,7 +43,7 @@ export const getLeaderboard = (
         )
 ;
 
-const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
+export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
 
     // Calcs for lastPlayed...
     const now = Date.now();
