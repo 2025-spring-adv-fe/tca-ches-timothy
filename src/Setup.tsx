@@ -14,7 +14,6 @@ export const Setup: React.FC<SetupProps> = ({
       , []
     )
 
-    setTitle("Setup")
     const game = useNavigate();
     return (
       <>
