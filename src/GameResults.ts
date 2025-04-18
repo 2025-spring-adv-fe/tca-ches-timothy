@@ -26,6 +26,7 @@ export interface GeneralFacts {
     totalGames: number;
     shortestGame: string;
     longestGame: string;
+    highestNumOfTurns: number;
 };
 
 export const getLeaderboard = (
@@ -68,6 +69,7 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
         , totalGames: results.length
         , shortestGame: formatGameDuration(Math.min(...gameDurationsInMilliseconds))
         , longestGame: formatGameDuration(Math.max(...gameDurationsInMilliseconds))
+        , highestNumOfTurns: 
     };
 };
 

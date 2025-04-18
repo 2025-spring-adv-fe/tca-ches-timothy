@@ -5,12 +5,14 @@ import { GameResult } from "./GameResults";
 interface PlayProps {
   addNewGameResult: (r: GameResult) => void;
   setTitle: (t: string) => void
+  addNumOfTurns: (r: string) => void
 
 };
 
 export const Play: React.FC<PlayProps> = ({
   addNewGameResult
   , setTitle
+  , addNumOfTurns
 
 }) => {
 
@@ -56,6 +58,7 @@ export const Play: React.FC<PlayProps> = ({
                 , start: startTimestamp
                 , end: new Date().toISOString()
               });
+              
               nav(-2);
             }
           }

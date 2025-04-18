@@ -86,6 +86,7 @@ const App = () => {
                 <Play 
                   addNewGameResult={addNewGameResult}
                   setTitle={setTitle}
+                  addNumOfTurns={setAddNumOfTurns}
                 />
               }
             />
