@@ -4,11 +4,13 @@ import { useNavigate } from "react-router";
 interface SetupProps {
   setTitle: (t:string) => void;
   previousPlayers: string[];
+  setCurrentPlayers: (players: string[]) => void;
 };
 
 export const Setup: React.FC<SetupProps> = ({
   setTitle
   , previousPlayers
+  , setCurrentPlayers
 }) => {
 
     useEffect(
@@ -33,7 +35,20 @@ export const Setup: React.FC<SetupProps> = ({
         <button 
           className="btn btn-active btn-secondary btn-lg mt-4"
           onClick={
-            () => game('/play')
+            () => {
+              setCurrentPlayers(
+                availablePlayers
+                  .filter(
+                    x => x.checked
+                  )
+                  .map(
+                    x => (
+                      x.name
+                    )
+                  )
+              );
+              game('/play');
+            }
           }
         >
           Start Playing
