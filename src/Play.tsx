@@ -55,6 +55,7 @@ export const Play: React.FC<PlayProps> = ({
                 ]
                 , start: startTimestamp
                 , end: new Date().toISOString()
+                , turnCount: turnNumber
               });
               nav(-2);
             }
