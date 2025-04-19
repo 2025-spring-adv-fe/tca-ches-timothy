@@ -46,6 +46,7 @@ const App = () => {
       , newGameResult
     ]
   )
+  const setAddNumOfTurns = 
 
   return (
     <div
@@ -86,7 +87,7 @@ const App = () => {
                 <Play 
                   addNewGameResult={addNewGameResult}
                   setTitle={setTitle}
-                  addNumOfTurns={setAddNumOfTurns}
+                  addNumOfTurns={set}
                 />
               }
             />
