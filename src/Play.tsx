@@ -5,12 +5,14 @@ import { GameResult } from "./GameResults";
 interface PlayProps {
   addNewGameResult: (r: GameResult) => void;
   setTitle: (t: string) => void
+  currentPlayers: string[]
 
 };
 
 export const Play: React.FC<PlayProps> = ({
   addNewGameResult
   , setTitle
+  , currentPlayers
 
 }) => {
 
@@ -43,26 +45,34 @@ export const Play: React.FC<PlayProps> = ({
             +
           </button>
         </h4>
-        <button 
-          className="btn btn-active btn-secondary btn-lg mt-4"
-          onClick={
-            () => {
-              addNewGameResult({
-                winner: "Barbie"
-                , players: [
-                  "Barbie"
-                  , "Ken"
-                ]
-                , start: startTimestamp
-                , end: new Date().toISOString()
-                , turnCount: turnNumber
-              });
-              nav(-2);
-            }
-          }
+        <div
+          className="grid grid-cols-2 gap-2 mt-4"
         >
-          Done
-        </button>
+          {
+            currentPlayers.map(
+              x => (
+                <button 
+                  className="btn btn-active btn-secondary btn-lg mt-4"
+                  onClick={
+                    () => {
+                      addNewGameResult({
+                        winner: x
+                        , players: currentPlayers
+                        , start: startTimestamp
+                        , end: new Date().toISOString()
+                        , turnCount: turnNumber
+                      });
+                      nav(-2);
+                    }
+                  }
+                >
+                  {x} Won
+                </button>
+              )
+            )
+          }
+        </div>
+
       </>
     );
   };
