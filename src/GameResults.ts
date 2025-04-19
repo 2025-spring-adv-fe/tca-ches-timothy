@@ -94,6 +94,20 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
     };
 };
 
+export const getPreviousPlayers = (
+    results: GameResult[]
+) => {
+    const allPlayersForAllGamesWithDupes = results.flatMap(
+        x => x.players
+    );
+
+    return [
+        ...new Set(allPlayersForAllGamesWithDupes)
+    ].sort(
+        (a, b) => a.localeCompare(b)
+    );
+};
+
 // helper function
 
 const getLeaderboardEntry = (
@@ -132,16 +146,3 @@ const getLeaderboardEntry = (
     };
 };
 
-const getPreviousPlayers = (
-    results: GameResult[]
-) => {
-    const allPlayersForAllGamesWithDupes = results.flatMap(
-        x => x.players
-    );
-
-    return [
-        ...new Set(allPlayersForAllGamesWithDupes)
-    ].sort(
-        (a, b) => a.localeCompare(b)
-    );
-};
