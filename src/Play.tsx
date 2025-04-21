@@ -70,10 +70,18 @@ export const Play: React.FC<PlayProps> = ({
                   {x} Won
                 </button>
               )
+              
             )
           }
         </div>
-
+        <button 
+          className="btn btn-active btn-warning btn-lg mt-4"
+          onClick={
+            () => {nav(-2);}
+          }
+        >
+                Quit
+        </button>
       </>
     );
   };
