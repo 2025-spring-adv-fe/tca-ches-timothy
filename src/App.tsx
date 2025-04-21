@@ -43,6 +43,8 @@ const App = () => {
   const [title, setTitle] = useState(AppTitle);
   const [currentPlayers, setCurrentPlayers] = useState<string[]>([]);
 
+  const [lightMode, setlightMode] = useState(true);
+
   const addNewGameResult = (newGameResult: GameResult) => setGameResults(
     [
       ...gameResults
@@ -52,7 +54,8 @@ const App = () => {
 
   return (
     <div
-      className='p-0'
+      className='p-0 overflow-x-hidden min-h-screen'
+      data-theme={lightMode ? "dark" : "light"}
     >
       <div className="navbar bg-base-300 shadow-lg overflow-x-hidden flex" >
         <h1 className="text-xl font-bold"></h1>
@@ -60,7 +63,12 @@ const App = () => {
 
         <label className="swap swap-rotate ml-auto">
           {/* this hidden checkbox controls the state */}
-          <input type="checkbox" />
+          <input 
+            type="checkbox" 
+            onClick={
+              () => setlightMode(!lightMode)
+            }
+          />
 
           {/* sun icon */}
           <svg
