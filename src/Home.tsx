@@ -8,6 +8,7 @@ interface HomeProps {
     leaderboardData: LeaderboardEntry[];
     setTitle: (t: string) => void;
     generalFacts: GeneralFacts;
+    gamesByMonthData: Array<[string, number]>;
 };
 
 
@@ -15,6 +16,7 @@ export const Home: React.FC<HomeProps> = ({
   leaderboardData
   , setTitle
   , generalFacts
+  , gamesByMonthData
 }) => {
 
 
@@ -147,7 +149,9 @@ export const Home: React.FC<HomeProps> = ({
                   </div>
                 )
                 : (
-                  <p>
+                  <p
+                    className="mx-3 mb-3"
+                  >
                     Play a game to see the leaderboard
                   </p>
                 )
@@ -156,6 +160,63 @@ export const Home: React.FC<HomeProps> = ({
 
           </div>
         </div>
+        <div 
+          className="card bg-base-100 w-full shadow-lg mt-4"
+        >
+          <div 
+            className="card-body"
+          >
+            <h2 
+              className="card-title"
+            >
+              Games By Month
+            </h2>
+            {
+              leaderboardData.length > 0
+                ? (
+                  <div className="overflow-x-auto">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th>Month</th>
+                          <th># OF GAMES</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        {
+                          gamesByMonthData.map(
+                            x => (
+                              <tr
+                                key={x[0]}
+                              >
+                                <td>
+                                  {x[0]}
+                                </td>
+                                <td>{x[1]}</td>
+                              </tr>
+                            )
+                          )
+                        }
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                )
+                : (
+                  <p
+                    className="mx-3 mb-3"
+                  >
+                    Play a game to see the leaderboard
+                  </p>
+                )
+            }
+            
+
+          </div>
+        </div>
+
       </>
     );
   };
