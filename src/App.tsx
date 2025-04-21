@@ -8,8 +8,9 @@ import {
 import { AppTitle, Home } from './Home';
 import { Setup } from './Setup';
 import { Play } from './Play';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GameResult, getGeneralFacts, getLeaderboard, getPreviousPlayers } from './GameResults';
+import localforage from 'localforage';
 
 const dummyGameResults: GameResult[] = [
   {
@@ -43,7 +44,28 @@ const App = () => {
   const [title, setTitle] = useState(AppTitle);
   const [currentPlayers, setCurrentPlayers] = useState<string[]>([]);
 
-  const [lightMode, setlightMode] = useState(true);
+  const [lightMode, setlightMode] = useState(false);
+
+  useEffect(
+    () => {
+      const loadLightMode = async () => {
+        const savedLightMode = await localforage.getItem<boolean>("lightMode") ?? false;
+
+        if (!ignore) {
+          setlightMode(savedLightMode)
+        }
+      }
+
+      let ignore = false;
+
+      loadLightMode();
+
+      return () => {
+        ignore = true;
+      };
+    }
+    , []
+  )
 
   const addNewGameResult = (newGameResult: GameResult) => setGameResults(
     [
@@ -66,7 +88,10 @@ const App = () => {
           <input 
             type="checkbox" 
             onClick={
-              () => setlightMode(!lightMode)
+              async () => {
+                const savedLightMode = await localforage.setItem("lightMode", !lightMode);
+                setlightMode(savedLightMode)
+              }
             }
           />
 
