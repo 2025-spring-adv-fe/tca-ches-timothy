@@ -72,6 +72,27 @@ const App = () => {
     , []
   )
 
+  useEffect(
+    () => {
+      const loadEmail = async () => {
+        const savedEmail = await localforage.getItem<string>("email") ?? "";
+
+        if (!ignore) {
+          setEmailOnModal(savedEmail)
+        }
+      }
+
+      let ignore = false;
+
+      loadEmail();
+
+      return () => {
+        ignore = true;
+      };
+    }
+    , []
+  )
+
   const addNewGameResult = (newGameResult: GameResult) => setGameResults(
     [
       ...gameResults
@@ -156,7 +177,17 @@ const App = () => {
           <div className="modal-action">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn">save</button>
+              <button 
+                className="btn"
+                onClick={
+                  async () => await localforage.setItem(
+                    "email"
+                    , emailOnModal
+                  )
+                }
+              >
+                save
+              </button>
             </form>
           </div>
         </div>
