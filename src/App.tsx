@@ -48,20 +48,21 @@ const App = () => {
   const [title, setTitle] = useState(AppTitle);
   const [currentPlayers, setCurrentPlayers] = useState<string[]>([]);
 
-  const [lightMode, setlightMode] = useState(false);
+  const [lightMode, setlightMode] = useState(true);
   const [emailOnModal, setEmailOnModal] =useState("");
 
   useEffect(
     () => {
+      let ignore = false;
       const loadLightMode = async () => {
-        const savedLightMode = await localforage.getItem<boolean>("lightMode") ?? false;
+        const savedLightMode = await localforage.getItem<boolean>("lightMode") ?? true;
 
         if (!ignore) {
           setlightMode(savedLightMode)
         }
       }
 
-      let ignore = false;
+      
 
       loadLightMode();
 
@@ -69,7 +70,7 @@ const App = () => {
         ignore = true;
       };
     }
-    , []
+    , [lightMode]
   )
 
   useEffect(
@@ -103,7 +104,7 @@ const App = () => {
   return (
     <div
       className='p-0 overflow-x-hidden min-h-screen'
-      data-theme={lightMode ? "dark" : "light"}
+      data-theme={lightMode ? "light" : "dark"}
     >
       <div className="navbar bg-base-300 shadow-lg overflow-x-hidden flex" >
         <h1 className="text-xl font-bold">
@@ -131,7 +132,8 @@ const App = () => {
             {/* this hidden checkbox controls the state */}
             <input 
               type="checkbox" 
-              onClick={
+              checked={!lightMode}
+              onChange={
                 async () => {
                   const savedLightMode = await localforage.setItem("lightMode", !lightMode);
                   setlightMode(savedLightMode)
