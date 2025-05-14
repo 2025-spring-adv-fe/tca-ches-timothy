@@ -11,6 +11,10 @@ import { Play } from './Play';
 import { useEffect, useRef, useState } from 'react';
 import { GameResult, getGeneralFacts, getLeaderboard, getPreviousPlayers, getGamesByMonth } from './GameResults';
 import localforage from 'localforage';
+import {
+  saveGameToCloud
+  , loadGamesFromCloud
+} from './tca-cloud-api'
 
 const dummyGameResults: GameResult[] = [
   {
@@ -51,6 +55,8 @@ const App = () => {
   const [lightMode, setlightMode] = useState(true);
   const [emailOnModal, setEmailOnModal] =useState("");
 
+  const[emailForCloudApi, setEmailForCloudApi] = useState("");
+
   useEffect(
     () => {
       let ignore = false;
@@ -80,6 +86,9 @@ const App = () => {
 
         if (!ignore) {
           setEmailOnModal(savedEmail)
+          if(savedEmail.length > 0){
+            setEmailForCloudApi(savedEmail);
+          }
         }
       }
 
@@ -189,10 +198,15 @@ const App = () => {
               <button 
                 className="btn"
                 onClick={
-                  async () => await localforage.setItem(
-                    "email"
-                    , emailOnModal
-                  )
+                    async () =>{ 
+                      const savedEmail = await localforage.setItem(
+                      "email"
+                      , emailOnModal
+                    );
+                    if (savedEmail.length > 0) {
+                      setEmailForCloudApi(savedEmail);
+                    }
+                  }
                 }
               >
                 save
