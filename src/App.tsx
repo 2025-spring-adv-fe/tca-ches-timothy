@@ -16,29 +16,6 @@ import {
   , loadGamesFromCloud
 } from './tca-cloud-api'
 
-const dummyGameResults: GameResult[] = [
-  {
-      winner: "Hermione"
-      , players: [
-          "Hermione"
-          , "Harry"
-          , "Ron"
-      ]
-      , start: "2025-03-01T18:20:41.576Z"
-      , end: "2025-03-01T18:35:42.576Z" 
-      , turnCount: 14      
-  }
-  , {
-      winner: "Ron"
-      , players: [
-          "Hermione"
-          , "Ron"
-      ]
-      , start: "2025-03-05T18:40:27.576Z"
-      , end: "2025-03-05T18:45:42.576Z"    
-      , turnCount: 22    
-  }
-];
 
 
 const App = () => {
@@ -47,8 +24,7 @@ const App = () => {
 
   const emailModalRef = useRef<HTMLDialogElement | null>(null);
 
-  const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults)
-  //const [gameResults, setGameResults] = useState<GameResult[]>([])
+  const [gameResults, setGameResults] = useState<GameResult[]>([])
   const [title, setTitle] = useState(AppTitle);
   const [currentPlayers, setCurrentPlayers] = useState<string[]>([]);
 
@@ -102,13 +78,48 @@ const App = () => {
     }
     , []
   )
+  useEffect(
+    () => {
+      const loadGameResults = async () => {
+        const savedGameResults = await loadGamesFromCloud(
+          emailForCloudApi
+          , "tca-chess-timothy-25s"
+        )
 
-  const addNewGameResult = (newGameResult: GameResult) => setGameResults(
+        if (!ignore) {
+          setGameResults(savedGameResults)
+        }
+      }
+
+      let ignore = false;
+      if (emailForCloudApi.length > 0) {
+        loadGameResults();
+      }
+
+      return () => {
+        ignore = true;
+      };
+    }
+    , [emailForCloudApi]
+  )
+
+  const addNewGameResult = async (newGameResult: GameResult) => {
+
+    if (emailForCloudApi.length > 0) {
+      await saveGameToCloud(
+        emailForCloudApi
+        , "tca-chess-timothy-25s"
+        , newGameResult.end
+        , newGameResult
+      )
+    }
+    setGameResults(
     [
       ...gameResults
       , newGameResult
     ]
   )
+}
 
   return (
     <div
@@ -262,5 +273,6 @@ const App = () => {
     </div>
   )
 }
+
 
 export default App
