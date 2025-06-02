@@ -23,6 +23,11 @@ export const Play: React.FC<PlayProps> = ({
     const nav = useNavigate();
 
     const [turnNumber, setTurnNumber] = useState(0);
+    const [queenNumber, setQueenNumber] = useState(0);
+    const [bishopNumber, setBishopNumber] = useState(0);
+    const [knightNumber, setKnightNumber] = useState(0);
+    const [rookNumber, setRookNumber] = useState(0);
+    const [pawnNumber, setPawnNumber] = useState(0);
 
     const [startTimestamp] = useState(
       new Date().toISOString()
@@ -39,6 +44,81 @@ export const Play: React.FC<PlayProps> = ({
             onClick={
               () => {
                 setTurnNumber(turnNumber + 1);
+              }
+            }
+          >
+            +
+          </button>
+        </h4>
+        <h4
+          className="text-lg font-semibold"
+        >
+          Amount of dead queens #{queenNumber}
+          <button 
+            className="btn btn-xs btn-outline btn-light ml-4"
+            onClick={
+              () => {
+                setQueenNumber(queenNumber + 1);
+              }
+            }
+          >
+            +
+          </button>
+        </h4>
+        <h4
+          className="text-lg font-semibold"
+        >
+          Amount of dead bishops: #{bishopNumber}
+          <button 
+            className="btn btn-xs btn-outline btn-light ml-4"
+            onClick={
+              () => {
+                setBishopNumber(bishopNumber + 1);
+              }
+            }
+          >
+            +
+          </button>
+        </h4>
+        <h4
+          className="text-lg font-semibold"
+        >
+          Amount of dead knights: #{knightNumber}
+          <button 
+            className="btn btn-xs btn-outline btn-light ml-4"
+            onClick={
+              () => {
+                setKnightNumber(knightNumber + 1);
+              }
+            }
+          >
+            +
+          </button>
+        </h4>
+        <h4
+          className="text-lg font-semibold"
+        >
+          Amount of dead rooks: #{rookNumber}
+          <button 
+            className="btn btn-xs btn-outline btn-light ml-4"
+            onClick={
+              () => {
+                setRookNumber(rookNumber + 1);
+              }
+            }
+          >
+            +
+          </button>
+        </h4>
+        <h4
+          className="text-lg font-semibold"
+        >
+          Amount of dead pawns: #{pawnNumber}
+          <button 
+            className="btn btn-xs btn-outline btn-light ml-4"
+            onClick={
+              () => {
+                setPawnNumber(pawnNumber + 1);
               }
             }
           >
