@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { GameResult } from "./GameResults";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChessKnight, faChessQueen, faChessBishop, faChessRook, faChessPawn } from '@fortawesome/free-solid-svg-icons'
 
 interface PlayProps {
   addNewGameResult: (r: GameResult) => void;
@@ -32,6 +34,7 @@ export const Play: React.FC<PlayProps> = ({
     const [startTimestamp] = useState(
       new Date().toISOString()
     );
+
     return (
       <>
 
@@ -53,6 +56,7 @@ export const Play: React.FC<PlayProps> = ({
         <h4
           className="text-lg font-semibold"
         >
+          <FontAwesomeIcon icon={faChessQueen} className="text-black text-2xl" />
           Amount of dead queens #{queenNumber}
           <button 
             className="btn btn-xs btn-outline btn-light ml-4"
@@ -68,6 +72,7 @@ export const Play: React.FC<PlayProps> = ({
         <h4
           className="text-lg font-semibold"
         >
+          <FontAwesomeIcon icon={faChessBishop} className="text-black text-2xl" />
           Amount of dead bishops: #{bishopNumber}
           <button 
             className="btn btn-xs btn-outline btn-light ml-4"
@@ -83,7 +88,8 @@ export const Play: React.FC<PlayProps> = ({
         <h4
           className="text-lg font-semibold"
         >
-          Amount of dead knights: #{knightNumber}
+          <FontAwesomeIcon icon={faChessKnight} className="text-black text-2xl" />
+            Amount of dead knights: #{knightNumber}
           <button 
             className="btn btn-xs btn-outline btn-light ml-4"
             onClick={
@@ -98,6 +104,7 @@ export const Play: React.FC<PlayProps> = ({
         <h4
           className="text-lg font-semibold"
         >
+          <FontAwesomeIcon icon={faChessRook} className="text-black text-2xl" />
           Amount of dead rooks: #{rookNumber}
           <button 
             className="btn btn-xs btn-outline btn-light ml-4"
@@ -113,6 +120,7 @@ export const Play: React.FC<PlayProps> = ({
         <h4
           className="text-lg font-semibold"
         >
+          <FontAwesomeIcon icon={faChessPawn} className="text-black text-2xl" />
           Amount of dead pawns: #{pawnNumber}
           <button 
             className="btn btn-xs btn-outline btn-light ml-4"
